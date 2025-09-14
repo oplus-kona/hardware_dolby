@@ -37,6 +37,7 @@ import co.aospa.dolby.DolbyConstants.Companion.dlog
 import co.aospa.dolby.DolbyController
 import co.aospa.dolby.R
 import com.android.settingslib.widget.MainSwitchPreference
+import com.android.settingslib.widget.SettingsBasePreferenceFragment
 
 class DolbySettingsFragment : SettingsBasePreferenceFragment(),
     OnPreferenceChangeListener, CompoundButton.OnCheckedChangeListener {
@@ -110,18 +111,18 @@ class DolbySettingsFragment : SettingsBasePreferenceFragment(),
 
         val context = requireContext()
         stereoPref = findPreference<SeekBarPreference>(PREF_STEREO_WIDENING)!!
-        if (!context.resources.getBoolean(R.bool.dolby_stereo_widening_supported)) {
+        if (!requireContext().resources.getBoolean(R.bool.dolby_stereo_widening_supported)) {
             settingsCategory.removePreference(stereoPref!!)
             stereoPref = null
         }
 
         volumePref = findPreference<SwitchPreferenceCompat>(PREF_VOLUME)!!
-        if (!context.resources.getBoolean(R.bool.dolby_volume_leveler_supported)) {
+        if (!requireContext().resources.getBoolean(R.bool.dolby_volume_leveler_supported)) {
             advSettingsCategory.removePreference(volumePref!!)
             volumePref = null
         }
 
-        preferenceManager.preferenceDataStore = DolbyPreferenceStore(context).also {
+        preferenceManager.preferenceDataStore = DolbyPreferenceStore(requireContext()).also {
             it.profile = dolbyController.profile
         }
 
@@ -134,14 +135,14 @@ class DolbySettingsFragment : SettingsBasePreferenceFragment(),
         spkVirtPref.onPreferenceChangeListener = this
         stereoPref?.apply {
             onPreferenceChangeListener = this@DolbySettingsFragment
-            min = context.resources.getInteger(R.integer.stereo_widening_min)
-            max = context.resources.getInteger(R.integer.stereo_widening_max)
+            min = requireContext().resources.getInteger(R.integer.stereo_widening_min)
+            max = requireContext().resources.getInteger(R.integer.stereo_widening_max)
         }
         dialoguePref.onPreferenceChangeListener = this
         dialogueAmountPref.apply {
             onPreferenceChangeListener = this@DolbySettingsFragment
-            min = context.resources.getInteger(R.integer.dialogue_enhancer_min)
-            max = context.resources.getInteger(R.integer.dialogue_enhancer_max)
+            min = requireContext().resources.getInteger(R.integer.dialogue_enhancer_min)
+            max = requireContext().resources.getInteger(R.integer.dialogue_enhancer_max)
         }
         bassPref.onPreferenceChangeListener = this
         volumePref?.onPreferenceChangeListener = this
@@ -226,15 +227,23 @@ class DolbySettingsFragment : SettingsBasePreferenceFragment(),
     }
 
     private fun updateProfileSpecificPrefsImmediate() {
+<<<<<<< HEAD
         if (!isAdded || context == null) return
+=======
+>>>>>>> 4359e1f (dolby: Use new material expressive design for settings preferences)
         if (!dolbyController.dsOn) {
             dlog(TAG, "updateProfileSpecificPrefs: Dolby is off")
             advSettingsCategory.isVisible = false
             return
         }
 
+<<<<<<< HEAD
         val unknownRes = getString(R.string.dolby_unknown)
         val headphoneRes = getString(R.string.dolby_connect_headphones)
+=======
+        val unknownRes = requireContext().getString(R.string.dolby_unknown)
+        val headphoneRes = requireContext().getString(R.string.dolby_connect_headphones)
+>>>>>>> 4359e1f (dolby: Use new material expressive design for settings preferences)
         val currentProfile = dolbyController.profile
         val isDynamicProfile = currentProfile == 0
         (preferenceManager.preferenceDataStore as DolbyPreferenceStore).profile = currentProfile
