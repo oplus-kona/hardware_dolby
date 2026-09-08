@@ -37,7 +37,6 @@ import co.aospa.dolby.DolbyConstants.Companion.dlog
 import co.aospa.dolby.DolbyController
 import co.aospa.dolby.R
 import com.android.settingslib.widget.MainSwitchPreference
-import com.android.settingslib.widget.SettingsBasePreferenceFragment
 
 class DolbySettingsFragment : SettingsBasePreferenceFragment(),
     OnPreferenceChangeListener, CompoundButton.OnCheckedChangeListener {
@@ -227,23 +226,15 @@ class DolbySettingsFragment : SettingsBasePreferenceFragment(),
     }
 
     private fun updateProfileSpecificPrefsImmediate() {
-<<<<<<< HEAD
         if (!isAdded || context == null) return
-=======
->>>>>>> 4359e1f (dolby: Use new material expressive design for settings preferences)
         if (!dolbyController.dsOn) {
             dlog(TAG, "updateProfileSpecificPrefs: Dolby is off")
             advSettingsCategory.isVisible = false
             return
         }
 
-<<<<<<< HEAD
         val unknownRes = getString(R.string.dolby_unknown)
         val headphoneRes = getString(R.string.dolby_connect_headphones)
-=======
-        val unknownRes = requireContext().getString(R.string.dolby_unknown)
-        val headphoneRes = requireContext().getString(R.string.dolby_connect_headphones)
->>>>>>> 4359e1f (dolby: Use new material expressive design for settings preferences)
         val currentProfile = dolbyController.profile
         val isDynamicProfile = currentProfile == 0
         (preferenceManager.preferenceDataStore as DolbyPreferenceStore).profile = currentProfile
