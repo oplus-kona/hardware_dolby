@@ -263,7 +263,7 @@ cc_prebuilt_library_shared {
 
 android_app_import {
 	name: "daxService",
-	owner: "oneplus",
+	owner: "sony",
 	apk: "proprietary/system_ext/priv-app/daxService/daxService.apk",
 	certificate: "platform",
 	dex_preopt: {
@@ -274,10 +274,11 @@ android_app_import {
 }
 
 android_app_import {
-	name: "DaxUI",
-	owner: "oneplus",
-	apk: "proprietary/system_ext/priv-app/DaxUI/DaxUI.apk",
+	name: "DolbySound",
+	owner: "sony",
+	apk: "proprietary/system_ext/priv-app/DolbySound/DolbySound.apk",
 	certificate: "platform",
+	overrides: ["MusicFX"],
 	dex_preopt: {
 		enabled: false,
 	},
