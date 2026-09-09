@@ -44,11 +44,25 @@ PRODUCT_COPY_FILES += \
 
 # Dolby
 PRODUCT_VENDOR_PROPERTIES += \
-    ro.vendor.dolby.dax.version=DAX3_3.7.0.8_r1
+    ro.vendor.dolby.dax.version=DAX3_3.7.0.8_r1 \
+    persist.vendor.audio_fx.current=dolby
 
-# DolbyManager
+# daxService (Sony)
+PRODUCT_COPY_FILES += \
+    $(DOLBY_PATH)/proprietary/system_ext/etc/permissions/privapp-com.dolby.daxservice.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/com.dolby.daxservice.xml \
+    $(DOLBY_PATH)/proprietary/system_ext/etc/sysconfig/config-com.dolby.daxservice.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/sysconfig/config-com.dolby.daxservice.xml \
+    $(DOLBY_PATH)/proprietary/system_ext/etc/sysconfig/hiddenapi-com.dolby.daxservice.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/sysconfig/hiddenapi-whitelist-com.dolby.daxservice.xml
+
 PRODUCT_PACKAGES += \
-    DolbyManager
+    daxService
+
+# DolbySound (Sony)
+PRODUCT_COPY_FILES += \
+    $(DOLBY_PATH)/proprietary/system_ext/etc/permissions/privapp-com.dolby.daxappui2.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-com.dolby.daxappui2.xml \
+    $(DOLBY_PATH)/proprietary/system_ext/etc/sysconfig/config-com.dolby.daxappui2.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/sysconfig/config-com.dolby.daxappui2.xml
+
+PRODUCT_PACKAGES += \
+    DolbySound
 
 # Init
 PRODUCT_PACKAGES += \

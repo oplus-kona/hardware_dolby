@@ -5,6 +5,9 @@
 // SPDX-License-Identifier: Apache-2.0
 //
 
+// Disabled in favor of Sony Xperia 1 V (pdx234) Dolby app (daxService + DolbySound).
+// Retained source code for reference; do not compile.
+/*
 android_app {
     name: "DolbyManager",
 
@@ -36,3 +39,4 @@ prebuilt_etc {
     sub_dir: "sysconfig",
     system_ext_specific: true,
 }
+*/
