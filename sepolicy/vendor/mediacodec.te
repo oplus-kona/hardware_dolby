@@ -1,2 +1,5 @@
-allow mediacodec hal_dms_hwservice:hwservice_manager find;
+# HIDL DMS
+hal_client_domain(mediacodec, hal_dms)
+
 binder_call(mediacodec, hal_dms_default)
+get_prop(mediacodec, vendor_dolby_prop)

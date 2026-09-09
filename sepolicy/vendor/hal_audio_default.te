@@ -1,2 +1,5 @@
-allow hal_audio_default hal_dms_hwservice:hwservice_manager find;
+# HIDL DMS
+hal_client_domain(hal_audio_default, hal_dms)
+
 binder_call(hal_audio_default, hal_dms_default)
+get_prop(hal_audio_default, vendor_dolby_prop)
